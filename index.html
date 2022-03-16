@@ -74,10 +74,12 @@
 
     console.log(stones[202])
 
+    let audio = new Audio('audio/champion.mp3')
+
     function moveBounce() {
 
         if (bounce.x === stones[202].x && bounce.y === stones[202].y) {
-            let audio = new Audio('audio/champion.mp3')
+
             audio.play();
             switch (event.keyCode) {
                 case 38:
@@ -798,11 +800,18 @@
             }
         } else if (bounce.x === stones[17].x && bounce.y === stones[17].y) {
             alert("Bạn đã thắng rồi!! Xin chúc mừng!!!!");
+            stopAudio(audio);
+
         }
 
         clearCanvas();
         drawstones()
         drawImage();
+    }
+
+    function stopAudio(audio) {
+        audio.pause();
+        audio.currentTime = 0;
     }
 
     function clearCanvas() {
@@ -819,7 +828,7 @@
         if (count<= 0){
             clearTimeout(endTime)
             alert("Hết giờ rồi BRO!!!")
-            return;
+
         }
     }
 
